@@ -16,7 +16,7 @@ A Discord bot written in Python for the Antisocial Jerks discord server communit
 ## Commands
 
 ### Server Admin Only
-* `addrole [emoji] [role name]` - Adds a listener for the specified emoji as a response to the ROLEMESSAGEID message 
+* `addrole [role name] [emoji]` - Adds a listener for the specified emoji as a response to the ROLEMESSAGEID message 
 
 * `deleterole [role name]` - Removes the listener for the specified role
 
