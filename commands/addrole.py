@@ -16,8 +16,15 @@ class addrole(commands.Cog):
         print('\n\n-------------')
         print('addRole called')
         
-        # Fetch Role information from the Guild
+        # Fetch guild information 
         guild = discord.Client.get_guild(self.bot, id=self.bot.discordguild)
+
+        # Confirm that the person who is sending the message has admin permissions in the guild
+        guildMember = await guild.fetch_member(ctx.author.id)
+        if not guildMember.guild_permissions.administrator:
+            return
+
+        # Fetch Role information from the Guild
         role = discord.utils.get(guild.roles,name=newrole)
 
         # Confirm the role exists
@@ -53,11 +60,6 @@ class addrole(commands.Cog):
 
         # Acknowledge the command by checking it off
         await ctx.message.add_reaction(emoji='✅')
-
-        #if ctx.author.guild_permissions.administrator:
-            #return
-        #else:
-            #await ctx.reply('You are not authorized to run this...')
 
 def setup(bot):
     bot.add_cog(addrole(bot))

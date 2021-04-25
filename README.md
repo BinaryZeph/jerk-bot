@@ -38,3 +38,4 @@ _none_
 |discord.py|Discord Python library|none|
 |dotenv|configuration file|none|
 |cogwatch|load command files from directory, auto load new commands and changes|none|
+|sqlite3|works with bot.db file to store info|none|
