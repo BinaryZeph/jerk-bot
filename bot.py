@@ -5,6 +5,9 @@ from cogwatch import Watcher
 import sqlite3
 con = sqlite3.connect('bot.db')
 
+import logging
+logging.basicConfig(level=logging.INFO)
+
 import discord
 from discord.ext import commands
 
@@ -66,6 +69,7 @@ async def on_raw_reaction_remove(payload):
 
     print('\n\n-------------')
     print('reaction_remove called')
+    logging.debug('reaction_remove called')
     
     emojiid = int(payload.emoji.id)
     userid = int(payload.user_id)
@@ -97,15 +101,12 @@ async def on_raw_reaction_remove(payload):
 
 @bot.event
 async def on_ready():
-    print('Logged in as')
-    print(bot.user.name)
-    print(bot.user.id)
-    print('------')
-
     game = discord.Game("some bot game")
     await bot.change_presence(status=discord.Status.online, activity=game)
 
     watcher = Watcher(bot, path="commands", preload=True)
     await watcher.start()
+
+    logging.info('Logged in as: %s with id: %s', bot.user.name, bot.user.id)
 
 bot.run(DISCORDTOKEN)
