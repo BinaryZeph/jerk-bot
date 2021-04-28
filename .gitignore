@@ -1,3 +1,6 @@
+# database
+bot.db
+
 # .env
 *.env
 !sample.env
