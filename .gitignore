@@ -1,5 +1,5 @@
 # database
-bot.db
+*.db
 
 # .env
 *.env
@@ -7,6 +7,9 @@ bot.db
 
 # pycache / Watcer
 __pycache__/
+
+# logs
+logs/
 
 # Distribution / packaging
 .Python
